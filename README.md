@@ -32,3 +32,16 @@ Głównym celem projektu jest stworzenie systemu pozwalającego na śledzenie tr
 - synchronizacja z serwisami zapewniającymi informację o aktualnych kursach walut, 
 - możliwość pobierania wykresów w postaci obrazków / PDFów 
 
+## Harmonogram prac
+
+ - [x] stworzenie bazy danych - 1h,
+ - [x] stworzenie repozytoriów i podstawowych projektów - 1h,  
+ - [ ] dodanie autoryzacji frontend - 3h,
+ - [ ] dodanie autoryzacji backend - 3h,
+ - [ ] implementacja połączenia z bazą danych - 1h,
+ - [ ] stworzeniu REST API z CRUD dla modeli - 6h,
+ - [ ] znaleźienie i konfiguracja serwisów zapewniających dane o kursach walut - 3h,
+ - [ ] implementacja logiki dla danych analitycznych - 8h,
+ - [ ] dodawanie tranzakcji frontend - 4h
+ - [ ] wyświetlanie tranzakcji - 4h,
+ - [ ] prezentacja danych analitycznych frontend - 6h
