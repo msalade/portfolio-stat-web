@@ -1,4 +1,4 @@
-# PortfolioStat
+# PortfolioStat Web
 
 ## Identyfikacja zagadnienia biznesowego
 
