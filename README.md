@@ -37,7 +37,7 @@ Głównym celem projektu jest stworzenie systemu pozwalającego na śledzenie tr
  - [x] stworzenie bazy danych - 1h,
  - [x] stworzenie repozytoriów i podstawowych projektów - 1h,  
  - [x] dodanie autoryzacji frontend - 3h,
- - [ ] dodanie autoryzacji backend - 3h,
+ - [x] dodanie autoryzacji backend - 3h,
  - [ ] implementacja połączenia z bazą danych - 1h,
  - [ ] stworzeniu REST API z CRUD dla modeli - 6h,
  - [ ] znaleźienie i konfiguracja serwisów zapewniających dane o kursach walut - 3h,
