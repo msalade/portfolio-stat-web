@@ -45,3 +45,5 @@ Głównym celem projektu jest stworzenie systemu pozwalającego na śledzenie tr
  - [ ] dodawanie tranzakcji frontend - 4h
  - [ ] wyświetlanie tranzakcji - 4h,
  - [ ] prezentacja danych analitycznych frontend - 6h
+ 
+ > [Backend app]([https://github.com/salat97/portfolio-stat-api])
