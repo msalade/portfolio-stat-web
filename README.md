@@ -1,12 +1,12 @@
 # PortfolioStat Web
 
-## Identyfikacja zagadnienia biznesowego
+## Identification of the business issue
 
-### Cel projektu
+### Project purpose
 
-Głównym celem projektu jest stworzenie systemu pozwalającego na śledzenie transakcji fiatami jak i krypto walutami. System ten pozwoli użytkownikom na łatwe i wygodne gromadzenie danych o ich portfolio w jednym miejscu. Zgromadzone dane mogą posłużyć do analizy, a w skutek czego podejmowanie lepszych decyzji finansowych przez osoby korzystające z aplikacji. 
+The main goal of the project is to create a system that allows to track fiat and currency transactions. This system will allow users to easily and conveniently collect data about their portfolio in one place. The collected data can be used for analysis and, as a result, for making better financial decisions by the users of the application. 
 
-### Cele szczegółowe 
+### Specific objectives 
 
 - wsparcie dla najpopularniejszych walut fiducjarnych i kryptowalut,
 - umożliwienie przechowywania danych dotyczących transakcji, 
@@ -15,38 +15,41 @@ Głównym celem projektu jest stworzenie systemu pozwalającego na śledzenie tr
 
 ## Wymagania
 
-### Techniczne
+- support for the most popular fiduciary and crypto currencies,
+- to enable the storage of transaction data, 
+- possibility of displaying historical data, 
+- presentation of portfolio data in a way that facilitates analysis
 
-- aplikacja w architekturze klient-serwer,
-- moduł kliencki dostępny poprzez przeglądarkę WWW w postacji SPA,
-- komunikacja między serwerem, a klientem w wykorzystaniem RESTa,
-- skalowalna i prosta w utrzymaniu baza danych zapewniająca autentykacje
+### Technical
 
-### Funkcjonale
+- application in client-server architecture,
+- client module available through a web browser in the SPA station,
+- communication between the server and the customer using REST,
+- scalable and easy-to-maintain database with authentication
 
-- możliwość tworzeni indywidualnego konta, 
-- manualne dodawanie, usuwanie i modyfikowanie transakcji, 
-- wyświetlanie historii transakcji, 
-- prezentacja ogólnych danych portfolio na stronie głównej (wartość portfela, stosunek poszczególnych walut itp),
-- przedstawienie danych statystycznych tranzakcji za pomocą wykresów (tranzakcje na lini czasowej itp), 
-- synchronizacja z serwisami zapewniającymi informację o aktualnych kursach walut, 
-- możliwość pobierania wykresów w postaci obrazków / PDFów 
+### Functional 
 
-## Harmonogram prac
+- possibility to create an individual account, 
+- manually add, delete and modify transactions, 
+- displaying transaction history, 
+- presentation of general portfolio data on the home page (value of the portfolio, ratio of individual currencies, etc.),
+- presentation of statistical data of transactions by means of charts (time line transactions, etc.), 
+- synchronization with services providing information on current currency rates, 
+- possibility of downloading charts in the form of images / PDFs 
 
- - [x] stworzenie bazy danych - 1h,
- - [x] stworzenie repozytoriów i podstawowych projektów - 1h,  
- - [x] dodanie autoryzacji frontend - 3h,
- - [x] dodanie autoryzacji backend - 3h,
- - [x] implementacja połączenia z bazą danych - 1h,
- - [x] stworzeniu REST API z CRUD dla modeli - 6h,
- - [ ] znaleźienie i konfiguracja serwisów zapewniających dane o kursach walut - 3h,
- - [ ] implementacja logiki dla danych analitycznych - 8h,
- - [ ] dodawanie tranzakcji frontend - 4h
- - [ ] wyświetlanie tranzakcji - 4h,
- - [ ] prezentacja danych analitycznych frontend - 6h
- 
- > [Backend app](https://github.com/salat97/portfolio-stat-api)
+## Work schedule
+
+ - [x] creating a database - 1h,
+ - [x] creating repositories and basic projects - 1h,  
+ - [x] adding the frontend authentication - 3h,
+ - [x] adding a backend authentication - 3h,
+ - [x] implementation of database connection - 1h,
+ - [x] creating a REST API with CRUD for models - 6h,
+ - [ ] finding and configuring services providing data on currency rates - 3h,
+ - [ ] implementation of logic for analytical data - 8h,
+ - [ ] frontend transactions form - 4h
+ - [ ] displaying the transaction - 4h,
+ - [ ] presentation of analytical data frontend - 6h
 
 ## Architecture
 
@@ -60,3 +63,5 @@ Głównym celem projektu jest stworzenie systemu pozwalającego na śledzenie tr
 
 ## Db relations
 ![enter image description here](https://raw.githubusercontent.com/salat97/portfolio-stat-web/master/static/relations.png)
+
+> [Backend app](https://github.com/salat97/portfolio-stat-api)
