@@ -13,13 +13,6 @@ The main goal of the project is to create a system that allows to track fiat and
 - możliwość wyświetlania historycznych danych, 
 - prezentacja danych dotyczących portfela w sposób ułatwiający analizę
 
-## Wymagania
-
-- support for the most popular fiduciary and crypto currencies,
-- to enable the storage of transaction data, 
-- possibility of displaying historical data, 
-- presentation of portfolio data in a way that facilitates analysis
-
 ### Technical
 
 - application in client-server architecture,
