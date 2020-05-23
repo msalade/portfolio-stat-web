@@ -47,3 +47,16 @@ Głównym celem projektu jest stworzenie systemu pozwalającego na śledzenie tr
  - [ ] prezentacja danych analitycznych frontend - 6h
  
  > [Backend app](https://github.com/salat97/portfolio-stat-api)
+
+## Architecture
+
+![enter image description here](https://raw.githubusercontent.com/salat97/portfolio-stat-web/master/static/architecture.png)
+
+## Authentication flow
+![enter image description here](https://raw.githubusercontent.com/salat97/portfolio-stat-web/master/static/auth.png)
+
+## Classes 
+![enter image description here](https://raw.githubusercontent.com/salat97/portfolio-stat-web/master/static/classes.png)
+
+## Db relations
+![enter image description here](https://raw.githubusercontent.com/salat97/portfolio-stat-web/master/static/relations.png)
