@@ -5,14 +5,28 @@ import { useForm } from 'react-hook-form';
 import AuthView from '../common/AuthView';
 import { FormData } from '../common/AuthForm/types';
 import app from '../../auth';
+import useStore from '../../hooks/useStore';
 
 const RegisterContainer = () => {
     const [error, setError] = useState<string>('');
     const { push } = useHistory();
     const { handleSubmit, register } = useForm<FormData>();
+    const {
+        useStore: { createUser }
+    } = useStore();
+
     const submitHandler = handleSubmit(async ({ email, password }) => {
         try {
             await app.auth().createUserWithEmailAndPassword(email, password);
+
+            await createUser({
+                email,
+                country: '',
+                gender: '',
+                name: '',
+                timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+                username: ''
+            });
 
             push('/');
         } catch (error) {

@@ -5,14 +5,18 @@ import { useForm } from 'react-hook-form';
 import { FormData } from '../common/AuthForm/types';
 import app from '../../auth';
 import AuthView from '../common/AuthView';
+import useStore from '../../hooks/useStore';
 
 const LoginContainer = () => {
     const [error, setError] = useState<string>('');
     const { push } = useHistory();
     const { handleSubmit, register } = useForm<FormData>();
+    const { useStore: { getByEmail } } = useStore();
+
     const submitHandler = handleSubmit(async ({ email, password }) => {
         try {
             await app.auth().signInWithEmailAndPassword(email, password);
+            await getByEmail(email);
 
             push('/');
         } catch (error) {

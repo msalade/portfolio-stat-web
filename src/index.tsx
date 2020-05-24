@@ -5,12 +5,15 @@ import * as serviceWorker from './serviceWorker';
 import { Routes } from './routes';
 import AuthProvider from './contexts/AuthContext';
 import { ThemeProvider } from './styles';
+import StoreProvider from './contexts/StoreContext';
 
 ReactDOM.render(
     <AuthProvider>
-        <ThemeProvider>
-            <Routes />
-        </ThemeProvider>
+        <StoreProvider>
+            <ThemeProvider>
+                <Routes />
+            </ThemeProvider>
+        </StoreProvider>
     </AuthProvider>,
     document.getElementById('root')
 );
