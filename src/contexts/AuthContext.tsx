@@ -7,7 +7,7 @@ export const AuthContext = createContext<User | null>(null);
 
 const AuthProvider: FC = ({ children }) => {
     const [user, setUser] = useState<User | null>(null);
-
+    
     useEffect(() => {
         app.auth().onAuthStateChanged(newUser => setUser(newUser));       
     }, [])

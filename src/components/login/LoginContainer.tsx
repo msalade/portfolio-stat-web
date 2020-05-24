@@ -11,7 +11,9 @@ const LoginContainer = () => {
     const [error, setError] = useState<string>('');
     const { push } = useHistory();
     const { handleSubmit, register } = useForm<FormData>();
-    const { useStore: { getByEmail } } = useStore();
+    const {
+        useStore: { getByEmail }
+    } = useStore();
 
     const submitHandler = handleSubmit(async ({ email, password }) => {
         try {
@@ -25,11 +27,11 @@ const LoginContainer = () => {
     });
 
     const registerEmail = register({
-        required: 'Required',
+        required: 'Required'
     });
 
     const registerPassword = register({
-        required: 'Required',
+        required: 'Required'
     });
 
     return (
