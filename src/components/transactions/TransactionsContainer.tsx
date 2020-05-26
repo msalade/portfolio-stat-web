@@ -16,7 +16,7 @@ const TransactionsContainer = () => {
             deleteTransaction
         },
         currencyStore: { currencies },
-        useStore: { id }
+        userStore: { id }
     } = useStore();
     const [formType, setFormType] = useState<'edit' | 'create'>('create');
     const [showForm, setShowForm] = useState<boolean>(false);

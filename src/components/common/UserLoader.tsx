@@ -10,7 +10,7 @@ const UserLoader: FC = ({ children }) => {
     const {
         currencyStore: { getAll },
         transactionStore: { getAllTransactions },
-        useStore: { getByEmail }
+        userStore: { getByEmail }
     } = useStore();
     const user = useContext(AuthContext);
 

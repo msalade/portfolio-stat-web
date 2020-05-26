@@ -42,7 +42,7 @@ Głównym celem projektu jest stworzenie systemu pozwalającego na śledzenie tr
  - [x] stworzeniu REST API z CRUD dla modeli - 6h,
  - [ ] znaleźienie i konfiguracja serwisów zapewniających dane o kursach walut - 3h,
  - [ ] implementacja logiki dla danych analitycznych - 8h,
- - [ ] dodawanie tranzakcji frontend - 4h
+ - [x] dodawanie tranzakcji frontend - 4h
  - [ ] wyświetlanie tranzakcji - 4h,
  - [ ] prezentacja danych analitycznych frontend - 6h
 

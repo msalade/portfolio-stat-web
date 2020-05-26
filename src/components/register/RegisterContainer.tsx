@@ -12,7 +12,7 @@ const RegisterContainer = () => {
     const { push } = useHistory();
     const { handleSubmit, register } = useForm<FormData>();
     const {
-        useStore: { createUser }
+        userStore: { createUser }
     } = useStore();
 
     const submitHandler = handleSubmit(async ({ email, password }) => {

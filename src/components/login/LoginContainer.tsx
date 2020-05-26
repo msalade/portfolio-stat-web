@@ -12,7 +12,7 @@ const LoginContainer = () => {
     const { push } = useHistory();
     const { handleSubmit, register } = useForm<FormData>();
     const {
-        useStore: { getByEmail }
+        userStore: { getByEmail }
     } = useStore();
 
     const submitHandler = handleSubmit(async ({ email, password }) => {

@@ -6,6 +6,7 @@ import { Home } from '../components/home';
 import { Register } from '../components/register';
 import { Login } from '../components/login';
 import { Transactions } from '../components/transactions';
+import { Profile } from '../components/profile';
 
 import { Wrapper } from './styled';
 import { NavMenu } from '../components/navMenu';
@@ -22,6 +23,7 @@ const Routes = () => (
                         component={Transactions}
                         path="/transactions"
                     />
+                    <PrivateRoute component={Profile} path="/profile" />
                     <PrivateRoute component={Home} exact path="/" />
                 </NavMenu>
             </Router>

@@ -5,13 +5,13 @@ import OperationStore from './OperationStore';
 
 const createStore = () => {
     const operationStore = new OperationStore();
-    const useStore = new UserStore();
+    const userStore = new UserStore();
     const transactionStore = new TransactionStore(operationStore);
     const currencyStore = new CurrencyStore();
 
     return {
         operationStore,
-        useStore,
+        userStore,
         transactionStore,
         currencyStore
     };
@@ -19,7 +19,7 @@ const createStore = () => {
 
 export type TStore = {
     operationStore: OperationStore;
-    useStore: UserStore;
+    userStore: UserStore;
     transactionStore: TransactionStore;
     currencyStore: CurrencyStore;
 };
