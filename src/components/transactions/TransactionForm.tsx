@@ -83,6 +83,7 @@ const TransactionForm = ({
                     value={transaction.buy.ammount}
                 />
                 <Autocomplete
+                    id="buy"
                     options={allCurrencies}
                     getOptionLabel={(curr: Currency) => curr.name}
                     style={{ width: 200 }}
@@ -103,6 +104,9 @@ const TransactionForm = ({
                             variant="outlined"
                         />
                     )}
+                    getOptionSelected={(option: Currency, value: Currency) =>
+                        !option || option.id === value.id
+                    }
                 />
             </InputsWrapper>
             <InputsWrapper>
@@ -122,6 +126,7 @@ const TransactionForm = ({
                     value={transaction.sell.ammount}
                 />
                 <Autocomplete
+                    id="sell"
                     options={allCurrencies}
                     getOptionLabel={(curr: Currency) => curr.name}
                     style={{ width: 200 }}
@@ -142,6 +147,9 @@ const TransactionForm = ({
                             variant="outlined"
                         />
                     )}
+                    getOptionSelected={(option: Currency, value: Currency) =>
+                          !option || option.id === value.id
+                    }
                 />
             </InputsWrapper>
             <InputsWrapper>

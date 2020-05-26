@@ -1,37 +1,31 @@
-import { observable } from 'mobx';
+import { observable, action } from 'mobx';
+import axios from 'axios';
+
 import Currency from '../dataTypes/currency';
+import app from '../auth';
 
-const currencies: Currency[] = [
-    {
-        id: '.',
-        name: 'Złoty',
-        symbol: 'PLN',
-        type: 'fiat'
-    },
-    {
-        id: '.',
-        name: 'sd',
-        symbol: 'sd',
-        type: 'fiat'
-    },
-    {
-        id: '.',
-        name: 'sdf',
-        symbol: 'sdf',
-        type: 'fiat'
-    },
-    {
-        id: '.',
-        name: 'sdf',
-        symbol: 'sdffs',
-        type: 'fiat'
-    }
-];
-
+const basePath = `${process.env.REACT_APP_PORTFOLIO_API_URL}/currency`;
 
 class CurrencyStore {
     @observable
-    currencies: Currency[] = currencies;
+    currencies: Currency[] = [];
+
+    @action
+    getAll = () => {
+        app.auth()
+            .currentUser?.getIdToken(true)
+            .then(token => {
+                axios
+                    .get(`${basePath}/all`, {
+                        headers: {
+                            AuthToken: token
+                        }
+                    })
+                    .then(({ data }) => {
+                        this.currencies = data;
+                    });
+            });
+    };
 }
 
 export default CurrencyStore;

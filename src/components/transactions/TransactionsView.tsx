@@ -42,11 +42,11 @@ const TransactionsView = ({
                     </ListItemAvatar>
                     <ListItemText
                         primary={`Buy: ${transaction.buy.ammount} ${transaction.buy.currency.symbol}`}
-                        secondary={`Comment ${transaction.comment}`}
+                        secondary={`Comment: ${transaction.comment || '-'}`}
                     />
                     <ListItemText
                         primary={`Sell: ${transaction.sell.ammount} ${transaction.sell.currency.symbol}`}
-                        secondary={`Exchange ${transaction.exchange}`}
+                        secondary={`Exchange: ${transaction.exchange || '-'}`}
                     />
                     <ListItemText
                         primary={format(transaction.date, 'MM/dd/yyyy')}

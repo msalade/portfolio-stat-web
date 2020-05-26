@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { observer } from 'mobx-react';
+import { toJS } from 'mobx';
 
 import TransactionsView from './TransactionsView';
 import Transaction, { DefaultTransaction } from '../../dataTypes/transacion';
@@ -14,9 +15,8 @@ const TransactionsContainer = () => {
             editTransaction,
             deleteTransaction
         },
-        currencyStore: {
-            currencies
-        }
+        currencyStore: { currencies },
+        useStore: { id }
     } = useStore();
     const [formType, setFormType] = useState<'edit' | 'create'>('create');
     const [showForm, setShowForm] = useState<boolean>(false);
@@ -29,7 +29,7 @@ const TransactionsContainer = () => {
             const newTrs: any = { ...trs };
 
             newTrs[field] = value;
-            console.log(newTrs);
+
             return newTrs;
         });
     };
@@ -43,7 +43,10 @@ const TransactionsContainer = () => {
         setShowForm(false);
 
         formType === 'create'
-            ? createTransaction(transaction)
+            ? createTransaction({
+                  ...transaction,
+                  user: id
+              })
             : editTransaction(transaction);
     };
 
@@ -66,7 +69,7 @@ const TransactionsContainer = () => {
     return (
         <>
             <TransactionsView
-                transactions={transactions}
+                transactions={toJS(transactions)}
                 onCreateClick={createClickHandler}
                 onDeleteClick={deleteClickHandler}
                 onEditClick={editClickHandler}
@@ -75,7 +78,7 @@ const TransactionsContainer = () => {
                 open={showForm}
                 type={formType}
                 transaction={transaction}
-                allCurrencies={currencies}
+                allCurrencies={toJS(currencies)}
                 onTransactionChange={onTransactionChange}
                 onCancel={formCancelHandler}
                 onSubmit={formSubmitHandler}

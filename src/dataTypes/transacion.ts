@@ -10,7 +10,7 @@ interface Transaction {
     type: string;
     buy: Operation;
     sell: Operation;
-    user: User;
+    user: User | string;
 }
 
 export const DefaultTransaction: Transaction = {
@@ -30,6 +30,6 @@ export const DefaultTransaction: Transaction = {
         ammount: 0
     },
     user: {} as User
-}
+};
 
 export default Transaction;

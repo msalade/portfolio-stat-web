@@ -1,13 +1,27 @@
 import UserStore from './UserStore';
 import TransactionStore from './TransactionStore';
 import CurrencyStore from './CurrencyStore';
+import OperationStore from './OperationStore';
 
-const store = {
-    useStore: new UserStore(),
-    transactionStore: new TransactionStore(),
-    currencyStore: new CurrencyStore()
+const createStore = () => {
+    const operationStore = new OperationStore();
+    const useStore = new UserStore();
+    const transactionStore = new TransactionStore(operationStore);
+    const currencyStore = new CurrencyStore();
+
+    return {
+        operationStore,
+        useStore,
+        transactionStore,
+        currencyStore
+    };
 };
 
-export type TStore = typeof store;
+export type TStore = {
+    operationStore: OperationStore;
+    useStore: UserStore;
+    transactionStore: TransactionStore;
+    currencyStore: CurrencyStore;
+};
 
-export default store;
+export default createStore();
