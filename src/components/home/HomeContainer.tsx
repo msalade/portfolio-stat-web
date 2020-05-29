@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { format, parseISO } from 'date-fns';
 import { observer } from 'mobx-react';
 import { toJS } from 'mobx';
@@ -12,6 +12,7 @@ const formatDate = (date: Date | undefined) =>
     !!date ? format(date, 'dd.MM.yyyy HH:mm') : '-';
 
 const HomeContainer = () => {
+    const [withBorder, setWithBorder] = useState<boolean>(false);
     const {
         analiticStore: {
             getFirstTrade,
@@ -52,7 +53,13 @@ const HomeContainer = () => {
         value: number
     }));
 
-    const printPage = () => print('dashboard', 'dashboard.pdf');
+    const printPage = () => {
+        setWithBorder(true);
+        setTimeout(() => {
+            print('dashboard', 'dashboard.pdf', true);
+            setWithBorder(false);
+        }, 100);
+    };
 
     return (
         <ColorProvider keys={Object.keys(currenciesState)}>
@@ -67,6 +74,7 @@ const HomeContainer = () => {
                 balance={balance}
                 tradesPerMonth={tradesPerMonth}
                 onPrintClick={printPage}
+                withBorder={withBorder}
             />
         </ColorProvider>
     );

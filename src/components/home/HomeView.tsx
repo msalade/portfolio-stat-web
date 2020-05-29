@@ -20,6 +20,7 @@ interface IHomeViewProps {
     balance: ChartData[];
     tradesPerMonth: ChartData[];
     onPrintClick: () => void;
+    withBorder: boolean;
 }
 
 const HomeView = ({
@@ -32,13 +33,14 @@ const HomeView = ({
     currValue,
     balance,
     tradesPerMonth,
-    onPrintClick
+    onPrintClick,
+    withBorder
 }: IHomeViewProps) => (
     <Wrapper>
         <IconButton onClick={onPrintClick}>
             <PictureAsPdf />
         </IconButton>
-        <Grid id="dashboard">
+        <Grid id="dashboard" withBorder={withBorder}>
             <Card style={{ gridArea: 'totalv' }}>
                 <CardContent>
                     <Typography color="textSecondary" gutterBottom>

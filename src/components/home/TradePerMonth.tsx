@@ -16,7 +16,7 @@ interface ITradePerMonthProps {
 
 const TradePerMonth = ({ data }: ITradePerMonthProps) => (
     <AreaChart
-        width={500}
+        width={600}
         height={400}
         data={data}
         margin={{
