@@ -51,19 +51,19 @@ class UserStore {
     };
 
     @action
-    getByEmail = (email: string) => {
+    getUser = () => {
         app.auth()
             .currentUser?.getIdToken(true)
             .then(token => {
                 axios
-                    .get(`${basePath}/byEmail/${encodeURIComponent(email)}`, {
+                    .get(`${basePath}/me`, {
                         headers: {
                             AuthToken: token
                         }
                     })
                     .then(({ data }) => {
                         const user = data && data[0];
-                        console.log(user)
+
                         if (user) {
                             this.id = user.id;
                             this.email = user.email;

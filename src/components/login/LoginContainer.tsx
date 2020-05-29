@@ -12,13 +12,13 @@ const LoginContainer = () => {
     const { push } = useHistory();
     const { handleSubmit, register } = useForm<FormData>();
     const {
-        userStore: { getByEmail }
+        userStore: { getUser }
     } = useStore();
 
     const submitHandler = handleSubmit(async ({ email, password }) => {
         try {
             await app.auth().signInWithEmailAndPassword(email, password);
-            await getByEmail(email);
+            await getUser();
 
             push('/');
         } catch (error) {

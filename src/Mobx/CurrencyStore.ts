@@ -11,7 +11,7 @@ class CurrencyStore {
     currencies: Currency[] = [];
 
     @action
-    getAll = () => {
+    getAllCurrencies = () => {
         app.auth()
             .currentUser?.getIdToken(true)
             .then(token => {

@@ -113,8 +113,8 @@ class TransactionStore {
     };
 
     @action
-    getAllTransactions = (email?: string) => {
-        const path = `${basePath}/all${!!email ? `/${email}` : ''}`;
+    getMyTransactions = () => {
+        const path = `${basePath}/all/me`;
 
         app.auth()
             .currentUser?.getIdToken(true)

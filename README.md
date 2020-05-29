@@ -38,10 +38,10 @@ The main goal of the project is to create a system that allows to track fiat and
  - [x] adding a backend authentication - 3h,
  - [x] implementation of database connection - 1h,
  - [x] creating a REST API with CRUD for models - 6h,
- - [ ] finding and configuring services providing data on currency rates - 3h,
+ - [x] finding and configuring services providing data on currency rates - 3h,
  - [ ] implementation of logic for analytical data - 8h,
  - [x] frontend transactions form - 4h
- - [ ] displaying the transaction - 4h,
+ - [x] displaying the transaction - 4h,
  - [ ] presentation of analytical data frontend - 6h
 
 ## Architecture

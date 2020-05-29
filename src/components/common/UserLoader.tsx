@@ -8,9 +8,9 @@ import useStore from '../../hooks/useStore';
 const UserLoader: FC = ({ children }) => {
     const [loading, setIsLoading] = useState(true);
     const {
-        currencyStore: { getAll },
-        transactionStore: { getAllTransactions },
-        userStore: { getByEmail }
+        currencyStore: { getAllCurrencies },
+        transactionStore: { getMyTransactions },
+        userStore: { getUser }
     } = useStore();
     const user = useContext(AuthContext);
 
@@ -18,9 +18,9 @@ const UserLoader: FC = ({ children }) => {
         setIsLoading(!user);
 
         if (!!user && user.uid) {
-            getAll();
-            getAllTransactions(user.email || '');
-            getByEmail(user.email || '');
+            getAllCurrencies();
+            getMyTransactions();
+            getUser();
         }
     }, [user]);
 
