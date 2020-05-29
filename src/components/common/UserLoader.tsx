@@ -10,7 +10,8 @@ const UserLoader: FC = ({ children }) => {
     const {
         currencyStore: { getAllCurrencies },
         transactionStore: { getMyTransactions },
-        userStore: { getUser }
+        userStore: { getUser },
+        analiticStore: { getCurrenciesStat }
     } = useStore();
     const user = useContext(AuthContext);
 
@@ -19,7 +20,9 @@ const UserLoader: FC = ({ children }) => {
             if (!!user && user.uid) {
                 getAllCurrencies();
                 getMyTransactions();
-                getUser();
+                getUser().then(user => {
+                    getCurrenciesStat(user.currency.symbol);
+                });
             }
 
             setIsLoading(false);

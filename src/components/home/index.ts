@@ -1,1 +1,1 @@
-export { default as Home } from './HomeView';
+export { default as Home } from './HomeContainer';

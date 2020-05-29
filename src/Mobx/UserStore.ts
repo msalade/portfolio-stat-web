@@ -4,6 +4,7 @@ import axios from 'axios';
 import { UserToCreate } from '../dataTypes/user';
 import app from '../auth';
 import Currency from '../dataTypes/currency';
+import User from '../dataTypes/user';
 
 const basePath = `${process.env.REACT_APP_PORTFOLIO_API_URL}/user`;
 
@@ -51,30 +52,30 @@ class UserStore {
     };
 
     @action
-    getUser = () => {
-        app.auth()
-            .currentUser?.getIdToken(true)
-            .then(token => {
-                axios
-                    .get(`${basePath}/me`, {
-                        headers: {
-                            AuthToken: token
-                        }
-                    })
-                    .then(({ data }) => {
-                        const user = data && data[0];
+    getUser = async (): Promise<User> => {
+        const token = await app.auth().currentUser?.getIdToken(true);
 
-                        if (user) {
-                            this.id = user.id;
-                            this.email = user.email;
-                            this.country = user.country;
-                            this.gender = user.gender;
-                            this.timezone = user.timezone;
-                            this.username = user.username;
-                            this.currency = user.currency;
-                            this.name = user.name;
-                        }
-                    });
+        return axios
+            .get(`${basePath}/me`, {
+                headers: {
+                    AuthToken: token
+                }
+            })
+            .then(({ data }) => {
+                const user = data && data[0];
+
+                if (user) {
+                    this.id = user.id;
+                    this.email = user.email;
+                    this.country = user.country;
+                    this.gender = user.gender;
+                    this.timezone = user.timezone;
+                    this.username = user.username;
+                    this.currency = user.currency;
+                    this.name = user.name;
+
+                    return user;
+                }
             });
     };
 
