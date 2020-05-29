@@ -6,6 +6,7 @@ import { toJS } from 'mobx';
 import HomeView from './HomeView';
 import useStore from '../../hooks/useStore';
 import ColorProvider from '../../contexts/ColorContext';
+import { print } from '../../util/printPage';
 
 const formatDate = (date: Date | undefined) =>
     !!date ? format(date, 'dd.MM.yyyy HH:mm') : '-';
@@ -51,6 +52,8 @@ const HomeContainer = () => {
         value: number
     }));
 
+    const printPage = () => print('dashboard', 'dashboard.pdf');
+
     return (
         <ColorProvider keys={Object.keys(currenciesState)}>
             <HomeView
@@ -63,6 +66,7 @@ const HomeContainer = () => {
                 currValue={currValue}
                 balance={balance}
                 tradesPerMonth={tradesPerMonth}
+                onPrintClick={printPage}
             />
         </ColorProvider>
     );

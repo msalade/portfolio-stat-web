@@ -22,3 +22,10 @@ export const InputsWrapper = styled.div`
         margin-right: 16px;
     }
 `;
+
+export const ButtonsWrapper = styled.div`
+    display: flex;
+    padding: 20px;
+    justify-content: space-between;
+    width: 180px;
+`;

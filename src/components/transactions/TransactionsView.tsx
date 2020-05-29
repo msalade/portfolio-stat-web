@@ -9,10 +9,10 @@ import {
     ListItemSecondaryAction,
     IconButton
 } from '@material-ui/core';
-import { Delete, Payment, Edit } from '@material-ui/icons';
+import { Delete, Payment, Edit, PictureAsPdf } from '@material-ui/icons';
 import { format } from 'date-fns';
 
-import { Wrapper } from './styled';
+import { Wrapper, ButtonsWrapper } from './styled';
 import Transaction from '../../dataTypes/transacion';
 
 interface ITransactionsViewProps {
@@ -20,19 +20,26 @@ interface ITransactionsViewProps {
     onCreateClick: () => void;
     onDeleteClick: (id: string) => void;
     onEditClick: (transaction: Transaction) => void;
+    onPrintClick: () => void;
 }
 
 const TransactionsView = ({
     transactions,
     onCreateClick,
     onDeleteClick,
-    onEditClick
+    onEditClick,
+    onPrintClick
 }: ITransactionsViewProps) => (
     <Wrapper>
-        <Button variant="contained" onClick={onCreateClick}>
-            Create
-        </Button>
-        <List>
+        <ButtonsWrapper>
+            <Button variant="contained" onClick={onCreateClick}>
+                Create
+            </Button>
+            <IconButton onClick={onPrintClick}>
+                <PictureAsPdf />
+            </IconButton>
+        </ButtonsWrapper>
+        <List id="transactions">
             {(transactions || []).map(transaction => (
                 <ListItem key={transaction.id}>
                     <ListItemAvatar>
@@ -41,6 +48,7 @@ const TransactionsView = ({
                         </Avatar>
                     </ListItemAvatar>
                     <ListItemText
+                        style={{ width: '247px' }}
                         primary={`Buy: ${transaction.buy.ammount} ${transaction.buy.currency.symbol}`}
                         secondary={`Comment: ${transaction.comment || '-'}`}
                     />

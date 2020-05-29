@@ -6,6 +6,7 @@ import TransactionsView from './TransactionsView';
 import Transaction, { DefaultTransaction } from '../../dataTypes/transacion';
 import TransactionForm from './TransactionForm';
 import useStore from '../../hooks/useStore';
+import { print } from '../../util/printPage';
 
 const TransactionsContainer = () => {
     const {
@@ -66,6 +67,8 @@ const TransactionsContainer = () => {
         setShowForm(true);
     };
 
+    const printHandler = () => print('transactions', 'transactions.pdf');
+
     return (
         <>
             <TransactionsView
@@ -73,6 +76,7 @@ const TransactionsContainer = () => {
                 onCreateClick={createClickHandler}
                 onDeleteClick={deleteClickHandler}
                 onEditClick={editClickHandler}
+                onPrintClick={printHandler}
             />
             <TransactionForm
                 open={showForm}

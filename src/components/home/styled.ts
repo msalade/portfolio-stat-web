@@ -4,6 +4,9 @@ export const Wrapper = styled.div`
     padding: 34px;
     margin: auto;
     max-width: 1300px;
+`;
+
+export const Grid = styled.div`
     display: grid;
     grid-gap: 20px;
     grid-template-columns: 1fr 1fr 1fr 1fr;
