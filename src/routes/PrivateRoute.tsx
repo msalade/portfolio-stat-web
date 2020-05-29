@@ -1,23 +1,28 @@
-import React, { useContext } from 'react';
-import { Route, Redirect } from 'react-router-dom';
+import React, { useContext, useEffect } from 'react';
+import { Route, useLocation, useHistory } from 'react-router-dom';
 
 import { AuthContext } from '../contexts/AuthContext';
 
+const unAuthRoute = ['/login', '/register'];
+
 const PrivateRoute = ({ component: RouteComponent, ...rest }: any) => {
     const user = useContext(AuthContext);
+    const { pathname } = useLocation();
+    const { push } = useHistory();
 
-    return (
-        <Route
-            {...rest}
-            render={props =>
-                !!user && user.uid ? (
-                    <RouteComponent {...props} />
-                ) : (
-                    <Redirect to="login" />
-                )
-            }
-        />
-    );
+    const isUnAuthRoute = unAuthRoute.some(path => path === pathname);
+
+    useEffect(() => {
+        if (!!user && isUnAuthRoute) {
+            push('/');
+        }
+
+        if (!user) {
+            push('/login');
+        }
+    }, []);
+
+    return <Route {...rest} render={props => <RouteComponent {...props} />} />;
 };
 
 export default PrivateRoute;

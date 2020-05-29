@@ -15,12 +15,14 @@ const UserLoader: FC = ({ children }) => {
     const user = useContext(AuthContext);
 
     useEffect(() => {
-        setIsLoading(!user);
+        if (user !== undefined) {
+            if (!!user && user.uid) {
+                getAllCurrencies();
+                getMyTransactions();
+                getUser();
+            }
 
-        if (!!user && user.uid) {
-            getAllCurrencies();
-            getMyTransactions();
-            getUser();
+            setIsLoading(false);
         }
     }, [user]);
 

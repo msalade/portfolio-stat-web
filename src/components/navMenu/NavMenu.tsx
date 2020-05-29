@@ -1,9 +1,10 @@
 import React, { FC } from 'react';
-import { AppBar, Toolbar, IconButton  } from '@material-ui/core';
-import { Home } from '@material-ui/icons';
+import { AppBar, Toolbar, IconButton } from '@material-ui/core';
+import { Home, ExitToApp } from '@material-ui/icons';
 import { useHistory } from 'react-router-dom';
 
 import { Link } from './style';
+import app from '../../auth';
 
 const NavMenu: FC = ({ children }) => {
     const { push } = useHistory();
@@ -18,9 +19,19 @@ const NavMenu: FC = ({ children }) => {
                     <Link onClick={() => push('/transactions')}>
                         Transactions
                     </Link>
-                    <Link onClick={() => push('/profile')}>
-                        Profile
-                    </Link>
+                    <Link onClick={() => push('/profile')}>Profile</Link>
+                    <IconButton
+                        onClick={() =>
+                            app
+                                .auth()
+                                .signOut()
+                                .then(() => {
+                                    push('/login');
+                                })
+                        }
+                    >
+                        <ExitToApp />
+                    </IconButton>
                 </Toolbar>
             </AppBar>
             {children}
