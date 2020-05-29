@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
-import { format } from 'date-fns';
+import { format, parseISO } from 'date-fns';
 import { observer } from 'mobx-react';
+import { toJS } from 'mobx';
 
 import HomeView from './HomeView';
 import useStore from '../../hooks/useStore';
@@ -45,6 +46,11 @@ const HomeContainer = () => {
         symbol: key
     }));
 
+    const tradesPerMonth = toJS(tradeByMonth).map(({ date, number }) => ({
+        name: format(parseISO(date), 'dd.MM.yyyy'),
+        value: number
+    }));
+
     return (
         <ColorProvider keys={Object.keys(currenciesState)}>
             <HomeView
@@ -56,6 +62,7 @@ const HomeContainer = () => {
                 currency={curSymbol}
                 currValue={currValue}
                 balance={balance}
+                tradesPerMonth={tradesPerMonth}
             />
         </ColorProvider>
     );

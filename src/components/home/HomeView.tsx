@@ -6,6 +6,7 @@ import CurrenciesPie from './CurrenciesPie';
 import CurrValue, { ICurrValue } from './CurrValue';
 import { ChartData } from './chartDataType';
 import Balance from './Balance';
+import TradePerMonth from './TradePerMonth';
 
 interface IHomeViewProps {
     totalValue: string;
@@ -16,6 +17,7 @@ interface IHomeViewProps {
     currency: string;
     currValue: ICurrValue[];
     balance: ChartData[];
+    tradesPerMonth: ChartData[];
 }
 
 const HomeView = ({
@@ -26,7 +28,8 @@ const HomeView = ({
     curByValue,
     currency,
     currValue,
-    balance
+    balance,
+    tradesPerMonth
 }: IHomeViewProps) => (
     <Wrapper>
         <Card style={{ gridArea: 'totalv' }}>
@@ -72,7 +75,7 @@ const HomeView = ({
         <Card style={{ gridArea: 'circle' }}>
             <CardContent>
                 <Typography color="textSecondary" gutterBottom>
-                    Value each Currency in {currency}
+                    Value each currency in {currency}
                 </Typography>
                 <CurrenciesPie data={curByValue} />
             </CardContent>
@@ -96,8 +99,9 @@ const HomeView = ({
         <Card style={{ gridArea: 'permonth' }}>
             <CardContent>
                 <Typography color="textSecondary" gutterBottom>
-                    Trades per Month
+                    Trades per month
                 </Typography>
+                <TradePerMonth data={tradesPerMonth} />
             </CardContent>
         </Card>
     </Wrapper>

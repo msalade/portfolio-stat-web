@@ -22,8 +22,8 @@ const Balance = ({ balance }: IBalanceProps) => {
 
     return (
         <BarChart
-            width={500}
-            height={300}
+            width={600}
+            height={400}
             data={balance}
             margin={{
                 top: 5,
