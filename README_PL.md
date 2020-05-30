@@ -49,15 +49,18 @@ Głównym celem projektu jest stworzenie systemu pozwalającego na śledzenie tr
 
 ## Architektura
 
-![enter image description here](https://raw.githubusercontent.com/salat97/portfolio-stat-web/master/static/architecture.png)
+![Architecture](https://raw.githubusercontent.com/salat97/portfolio-stat-web/master/static/architecture.png)
 
 ## Authentication flow
-![enter image description here](https://raw.githubusercontent.com/salat97/portfolio-stat-web/master/static/auth.png)
+![Authentication](https://raw.githubusercontent.com/salat97/portfolio-stat-web/master/static/auth.png)
 
 ## Classes 
-![enter image description here](https://raw.githubusercontent.com/salat97/portfolio-stat-web/master/static/classes.png)
+![Classes](https://raw.githubusercontent.com/salat97/portfolio-stat-web/master/static/classes.png)
 
 ## Db relations
-![enter image description here](https://raw.githubusercontent.com/salat97/portfolio-stat-web/master/static/relations.png)
+![db_relations](https://raw.githubusercontent.com/salat97/portfolio-stat-web/master/static/relations.png)
+
+## Przepływ danych
+![data_flow](https://raw.githubusercontent.com/salat97/portfolio-stat-web/master/static/dataflow.png)
 
 > [Backend app](https://github.com/salat97/portfolio-stat-api)
