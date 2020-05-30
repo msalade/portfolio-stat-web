@@ -10,10 +10,6 @@ const AuthProvider: FC = ({ children }) => {
     const [authFlag, setAuthFalg] = useState<boolean>(true);
 
     useEffect(() => {
-        app.auth().onAuthStateChanged(newUser => setUser(newUser));
-    }, []);
-
-    useEffect(() => {
         app.auth().onAuthStateChanged(user => {
             if (authFlag) {
                 setAuthFalg(false);
