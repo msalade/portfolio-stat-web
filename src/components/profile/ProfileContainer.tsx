@@ -3,6 +3,7 @@ import { observer } from 'mobx-react';
 
 import ProfileView from './ProfileView';
 import useStore from '../../hooks/useStore';
+import ProfileSkeleton from './ProfileSkeleton';
 
 const ProfileContainer = () => {
     const {
@@ -14,13 +15,16 @@ const ProfileContainer = () => {
             name,
             timezone,
             username,
+            loadingUser,
             onUserChange,
             editUser
         },
         currencyStore: { currencies }
     } = useStore();
 
-    return (
+    return loadingUser ? (
+        <ProfileSkeleton />
+    ) : (
         <ProfileView
             country={country}
             currency={currency}

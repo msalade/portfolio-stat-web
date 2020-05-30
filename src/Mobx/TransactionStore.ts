@@ -8,10 +8,13 @@ import OperationStore from './OperationStore';
 const basePath = `${process.env.REACT_APP_PORTFOLIO_API_URL}/transaction`;
 
 class TransactionStore {
+    operationStore: OperationStore = {} as OperationStore;
+  
     @observable
     transactions: Transaction[] = [];
 
-    operationStore: OperationStore = {} as OperationStore;
+    @observable 
+    loadingTransactions: boolean = true;
 
     constructor(operationStore: OperationStore) {
         this.operationStore = operationStore;
@@ -38,7 +41,10 @@ class TransactionStore {
     };
 
     @action
-    editTransaction = (transaction: Transaction) => {
+    editTransaction = async (transaction: Transaction) => {
+        await this.operationStore.editOperation(transaction.buy);
+        await this.operationStore.editOperation(transaction.sell);
+
         app.auth()
             .currentUser?.getIdToken(true)
             .then(token => {
@@ -107,7 +113,11 @@ class TransactionStore {
                                 ...transaction
                             },
                             ...toJS(this.transactions)
-                        ];
+                        ].sort(
+                            (a, b) =>
+                                (new Date(b.date) as any) -
+                                (new Date(a.date) as any)
+                        );
                     });
             });
     };
@@ -115,6 +125,7 @@ class TransactionStore {
     @action
     getMyTransactions = () => {
         const path = `${basePath}/all/me`;
+        this.loadingTransactions = true;
 
         app.auth()
             .currentUser?.getIdToken(true)
@@ -130,6 +141,8 @@ class TransactionStore {
                             ...trs,
                             date: new Date(trs.date)
                         }));
+
+                        this.loadingTransactions = false;
                     });
             });
     };

@@ -4,6 +4,7 @@ import { observer } from 'mobx-react';
 import { toJS } from 'mobx';
 
 import HomeView from './HomeView';
+import HomeSkeleton from './HomeSkeleton';
 import useStore from '../../hooks/useStore';
 import ColorProvider from '../../contexts/ColorContext';
 import { print } from '../../util/printPage';
@@ -22,7 +23,8 @@ const HomeContainer = () => {
             lastTrade,
             totalValue,
             tradeByMonth,
-            currenciesState
+            currenciesState,
+            loadingCurrStat
         },
         transactionStore: { transactions },
         userStore: { currency }
@@ -63,19 +65,23 @@ const HomeContainer = () => {
 
     return (
         <ColorProvider keys={Object.keys(currenciesState)}>
-            <HomeView
-                totalValue={`${Math.round(totalValue)} ${curSymbol}`}
-                firstTrade={formatDate(firstTrade)}
-                lastTrade={formatDate(lastTrade)}
-                totalTrades={transactions?.length}
-                curByValue={curByValue}
-                currency={curSymbol}
-                currValue={currValue}
-                balance={balance}
-                tradesPerMonth={tradesPerMonth}
-                onPrintClick={printPage}
-                withBorder={withBorder}
-            />
+            {loadingCurrStat ? (
+                <HomeSkeleton />
+            ) : (
+                <HomeView
+                    totalValue={`${Math.round(totalValue)} ${curSymbol}`}
+                    firstTrade={formatDate(firstTrade)}
+                    lastTrade={formatDate(lastTrade)}
+                    totalTrades={transactions?.length}
+                    curByValue={curByValue}
+                    currency={curSymbol}
+                    currValue={currValue}
+                    balance={balance}
+                    tradesPerMonth={tradesPerMonth}
+                    onPrintClick={printPage}
+                    withBorder={withBorder}
+                />
+            )}
         </ColorProvider>
     );
 };

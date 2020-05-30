@@ -33,6 +33,9 @@ class UserStore {
     @observable
     currency: Currency = {} as Currency;
 
+    @observable
+    loadingUser: boolean = true;
+
     @action
     onUserChange = (data: any, field: string) => {
         (this as any)[field] = data;
@@ -54,6 +57,7 @@ class UserStore {
     @action
     getUser = async (): Promise<User> => {
         const token = await app.auth().currentUser?.getIdToken(true);
+        this.loadingUser = true;
 
         return axios
             .get(`${basePath}/me`, {
@@ -73,6 +77,8 @@ class UserStore {
                     this.username = user.username;
                     this.currency = user.currency;
                     this.name = user.name;
+
+                    this.loadingUser = false;
 
                     return user;
                 }

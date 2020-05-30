@@ -26,6 +26,27 @@ class OperationStore {
             )
             .then(({ data }) => data.id);
     };
+
+    @action
+    editOperation = async (operation: Operation) => {
+        const token = await app.auth().currentUser?.getIdToken(true);
+
+        return axios
+            .post(
+                `${basePath}`,
+                {
+                    ammount: Number(operation.ammount),
+                    currency: operation.currency.id,
+                    id: operation.id
+                },
+                {
+                    headers: {
+                        AuthToken: token
+                    }
+                }
+            )
+            .then(({ data }) => data.id);
+    };
 }
 
 export type TOperationStore = typeof OperationStore;

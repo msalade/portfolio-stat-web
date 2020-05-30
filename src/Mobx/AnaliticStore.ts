@@ -34,9 +34,13 @@ class AnaliticStore {
     @observable
     currenciesState: CurrenciesState = {};
 
+    @observable
+    loadingCurrStat: boolean = true;
+
     @action
-    getFirstTrade = () => {
-        app.auth()
+    getFirstTrade = async () => {
+        return app
+            .auth()
             .currentUser?.getIdToken(true)
             .then(token => {
                 axios
@@ -54,8 +58,9 @@ class AnaliticStore {
     };
 
     @action
-    getLastTrade = () => {
-        app.auth()
+    getLastTrade = async () => {
+        return app
+            .auth()
             .currentUser?.getIdToken(true)
             .then(token => {
                 axios
@@ -74,6 +79,8 @@ class AnaliticStore {
 
     @action
     getCurrenciesStat = (currency: string) => {
+        this.loadingCurrStat = true;
+
         app.auth()
             .currentUser?.getIdToken(true)
             .then(token => {
@@ -85,17 +92,20 @@ class AnaliticStore {
                     })
                     .then(({ data }) => {
                         this.currenciesState = data;
-                      
+
                         for (let symbol in data) {
                             this.totalValue += data[symbol].byCurr;
                         }
+
+                        this.loadingCurrStat = false;
                     });
             });
     };
 
     @action
-    getTradesByMonth = () => {
-        app.auth()
+    getTradesByMonth = async () => {
+        return app
+            .auth()
             .currentUser?.getIdToken(true)
             .then(token => {
                 axios

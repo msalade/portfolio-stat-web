@@ -7,6 +7,7 @@ import Transaction, { DefaultTransaction } from '../../dataTypes/transacion';
 import TransactionForm from './TransactionForm';
 import useStore from '../../hooks/useStore';
 import { print } from '../../util/printPage';
+import TransactionsSkeleton from './TransactionsSkeleton';
 
 const TransactionsContainer = () => {
     const {
@@ -14,7 +15,8 @@ const TransactionsContainer = () => {
             transactions,
             createTransaction,
             editTransaction,
-            deleteTransaction
+            deleteTransaction,
+            loadingTransactions
         },
         currencyStore: { currencies },
         userStore: { id }
@@ -69,7 +71,9 @@ const TransactionsContainer = () => {
 
     const printHandler = () => print('transactions', 'transactions.pdf');
 
-    return (
+    return loadingTransactions ? (
+        <TransactionsSkeleton />
+    ) : (
         <>
             <TransactionsView
                 transactions={toJS(transactions)}
